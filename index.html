@@ -1,0 +1,929 @@
+
+<!DOCTYPE html><html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница | Liriki12 </title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Сайт Лириков. Вы можете здесь написать мне, посмотреть биографию, купить проект КРМП или же написать на почту, если нет соцсетей.">
+    <meta name="keywords" content="`Лирики, Liriki12, биография, соцсети, Telegram, ВКонтакте, почта, Gmail, Mail.ru, CRMP, проекты, купить проект, сайт Лириков, контакты, связь">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #b376d1;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f5f5f5;
+            --accent: #6a3093;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Unbounded', 'Space Grotesk', sans-serif;
+            color: var(--text);
+            background-color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        
+        /* Партиклы и эффекты фона */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; /* Пониженный z-index */
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(142, 68, 173, 0.1);
+            box-shadow: 0 0 20px rgba(142, 68, 173, 0.3);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Глитч-эффект */
+        .glitch-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Пониженный z-index */
+            pointer-events: none; /* Клики проходят сквозь */
+            opacity: 0;
+            background: linear-gradient(
+                0deg,
+                transparent 45%,
+                rgba(142, 68, 173, 0.1) 50%,
+                transparent 55%
+            );
+            background-size: 100% 10px;
+            animation: glitch 8s infinite;
+            mix-blend-mode: overlay;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { opacity: 0; transform: translateY(0); }
+            2% { opacity: 0.1; transform: translateY(-5px); }
+            4% { opacity: 0; transform: translateY(5px); }
+            6% { opacity: 0.05; transform: translateY(-3px); }
+            8% { opacity: 0; transform: translateY(0); }
+        }
+        
+        /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            background: rgba(18, 18, 18, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(142, 68, 173, 0.2);
+            backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .navbar.scrolled {
+            height: 70px;
+            background: rgba(10, 10, 10, 0.98);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.5s;
+        }
+        
+        .logo:hover img {
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.6rem;
+            background: linear-gradient(to right, #8e44ad, #6a3093);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #8e44ad, #6a3093);
+            transition: width 0.5s;
+        }
+        
+        .logo:hover .logo-text::after {
+            width: 100%;
+        }
+        
+        /* Бургер меню */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+            position: relative;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(to right, #8e44ad, #6a3093);
+            border-radius: 3px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+            background: linear-gradient(to right, #fff, #d3a8ff);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+            background: linear-gradient(to right, #fff, #d3a8ff);
+        }
+        
+        /* Мобильное меню - теперь адаптивное */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--darker);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.95);
+    border-left: 1px solid rgba(142, 68, 173, 0.3);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8rem; /* Уменьшаем размер для ПК */
+    margin: 15px 0;
+    padding: 10px 30px;
+    background: linear-gradient(to right, #fff, #d3a8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(142, 68, 173, 0.5);
+    font-weight: 700;
+    letter-spacing: -1px;
+    transition: all 0.4s;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.mobile-menu a:hover {
+    transform: scale(1.1);
+}
+
+/* Делаем бургер-меню видимым всегда */
+.menu-toggle {
+    display: flex;
+    z-index: 1000;
+}
+
+/* Адаптация для ПК */
+@media (min-width: 769px) {
+    .mobile-menu a {
+        font-size: 1.5rem; /* Меньше размер текста на ПК */
+    }
+}
+        
+        .mobile-menu a:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Основной контент */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 5.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, #d3a8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(142, 68, 173, 0.5);
+            letter-spacing: -2px;
+            line-height: 1;
+            font-weight: 900;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.6s forwards;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 400;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, #6a3093, #8e44ad);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+            margin: 15px;
+            box-shadow: 0 10px 30px rgba(106, 48, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.9s forwards;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.6s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(106, 48, 147, 0.6);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Карточки */
+        .section {
+            padding: 120px 40px;
+            position: relative;
+        }
+        
+        .section-title-container {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 80px;
+            background: linear-gradient(to right, #fff, #d3a8ff);
+            -webkit-background-clip: text;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title {
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8e44ad, transparent);
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 25px;
+            padding: 50px 40px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(142, 68, 173, 0.1), transparent 70%);
+            z-index: 1; /* Ниже контента */
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(142, 68, 173, 0.3);
+        }
+        
+        /* Новый класс для контента карточек */
+        .card-content {
+            position: relative;
+            z-index: 20; /* Выше псевдоэлемента */
+        }
+        
+        .card-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        
+        .card-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-family: 'Rubik', sans-serif;
+            font-weight: 400;
+        }
+        
+        .card-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 30; /* Самый верхний слой */
+        }
+        
+        .card-btn {
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(142, 68, 173, 0.15);
+            border-radius: 12px;
+            transition: all 0.4s;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(142, 68, 173, 0.3);
+            font-weight: 500;
+            position: relative;
+            z-index: 40; /* Максимальный приоритет */
+        }
+        
+        .card-btn:hover {
+            background: rgba(142, 68, 173, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(106, 48, 147, 0.3);
+        }
+        
+        .card-btn img {
+            width: 36px;
+            height: 36px;
+            margin-right: 12px;
+        }
+        
+        /* Футер */
+        .footer {
+            padding: 60px 40px 40px;
+            background: linear-gradient(to top, #0a0a0a, #121212);
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 0 auto;
+            font-size: 1rem;
+            font-family: 'Rubik';
+        }
+        
+        .footer-logo img {
+            width: 150px;
+            height: 80px;
+        }
+        
+        .footer-logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(to right, #8e44ad, #6a3093);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .footer-info {
+            text-align: right;
+        }
+        
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .footer-reg {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .footer-reg img {
+            width: 90px;
+            height: auto;
+            opacity: 0.8;
+        }
+        
+        /* Анимации при скролле */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            h1 { font-size: 4rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .section-title { font-size: 2.5rem; }
+            .card-title { font-size: 2rem; }
+            .card-description { font-size: 1.1rem; }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 0 25px; height: 80px; }
+            .navbar.scrolled { height: 60px; }
+            .logo-text { font-size: 1.4rem; }
+            
+            h1 { font-size: 3rem; }
+            .hero-subtitle { font-size: 1.1rem; max-width: 100%; }
+            .btn { padding: 16px 32px; font-size: 1.1rem; }
+            
+            .section { padding: 80px 25px; }
+            .section-title { font-size: 2rem; margin-bottom: 50px; }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .card {
+                padding: 40px 30px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .footer-info {
+                text-align: center;
+            }
+            
+            /* Показываем бургер меню */
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .btn { padding: 14px 28px; font-size: 1rem; }
+            
+            .section { padding: 60px 20px; }
+            .section-title { font-size: 1.8rem; }
+            
+            .card {
+                padding: 30px 25px;
+            }
+            
+            .card-title {
+                font-size: 1.8rem;
+            }
+            
+            .card-description {
+                font-size: 1rem;
+            }
+            
+            .card-btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            
+            .mobile-menu a {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<!-- Партиклы фона -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Глитч-эффект -->
+    <div class="glitch-effect"></div>
+<!-- Навигация -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <span class="logo-text">Liriki12</span>
+        </div>
+        <!-- Бургер меню -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+    </nav>
+    
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="menu">
+        <a href="#social" class="btn">Соц сети</a>
+        <a href="#biography" class="btn">Биография</a>
+    </div>
+
+
+    <section class="hero">
+            <h2>Листай вниз, чтобы узнать обомне немного побольше!</р>
+    </section>
+   
+    <section class="section" id="social">
+        <div class="section-title-container">
+            <h2 class="section-title animate-on-scroll">Соц сети</h2>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card animate-on-scroll">
+                <div class="card-content">
+                    <h3 class="card-title">Telegram</h3>
+                    <p class="card-description">Свяжитесь со мной через Telegram. Отвечаю практически быстро и всегда на связи!</p>
+                    <div class="card-buttons">
+                        <a href="https://t.me/Liriki12" target="_blank" class="card-btn">
+                            <img src="Tg.webp" alt="Telegram">
+                            Основной аккаунт
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card animate-on-scroll">
+                <div class="card-content">
+                    <h3 class="card-title">ВКонтакте</h3>
+                    <p class="card-description">Мой аккаунт ВКонтакте для тех, кто предпочитает эту платформу. Учтите, что я редко там бываю - лучше писать в Telegram.</p>
+                    <div class="card-buttons">
+                        <a href="https://vk.com/timofei_127" target="_blank" class="card-btn">
+                            <img src="VK.png" alt="VK">
+                            ВКонтакте
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card animate-on-scroll">
+                <div class="card-content">
+                    <h3 class="card-title">Gmail</h3>
+                    <p class="card-description">Общение здесь бесплатное, но ответы могут задержаться — я чаще онлайн на основном аккаунте. Имейте терпение.</p>
+                    <div class="card-buttons">
+                        <a href="mailto:tv1111cer@gmail.com" target="_blank" class="card-btn">
+                            <img src="Gmail.png" alt="Gmail">
+                            Gmail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card animate-on-scroll">
+                <div class="card-content">
+                    <h3 class="card-title">Мой канал</h3>
+                    <p class="card-description">В канале ты можешь узнать о бомне немного побольше.</p>
+                    <div class="card-buttons">
+                        <a href="https://t.me/Timofei33" target="_blank"  class="card-btn">
+                            <img src="Tg.webp" alt="Telegram канал">
+                            Telegram канал
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<!-- Секция биографии -->
+    <section class="section" id="biography">
+        <div class="section-title-container">
+            <h2 class="section-title animate-on-scroll">Биография</h2>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card animate-on-scroll">
+                <div class="card-content">
+                    <h3 class="card-title">Моё био</h3>
+                    <p class="card-description">Меня зовут Тимофей.</p>
+                    <p class="card-description">Я проживаю в г.Туле</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Футер -->
+<footer class="footer" style="background: transparent; color: white; padding: 20px 0; border-top: none;">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <span style="color: white;">
+                © 2025 ООО « Liriki12.ru »<br>
+               
+            </span>
+        </div>          
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+<script>
+    // Защита от скачивания изображений
+    document.addEventListener('DOMContentLoaded', function() {
+        // Блокировка контекстного меню для всех изображений
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.oncontextmenu = function() { return false; };
+            img.draggable = false;
+            
+            // Защита от перетаскивания
+            img.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+        
+        // Блокировка клавиш PrintScreen и других
+        document.addEventListener('keydown', function(e) {
+            // Блокировка PrintScreen, Ctrl+P, Ctrl+S и т.д.
+            if (e.key === "PrintScreen" || 
+                (e.ctrlKey && e.key === "p") || 
+                (e.ctrlKey && e.key === "s")) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    });
+
+    // Обработчик для mailto ссылок
+    function handleMailClick(event, email) {
+        event.preventDefault();
+        window.location.href = `mailto:${email}`;
+        return false;
+    }
+
+    // Инициализация партиклов
+    function initParticles() {
+        const container = document.getElementById('particles');
+        const particleCount = window.innerWidth < 768 ? 15 : 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Случайные параметры
+            const size = Math.random() * 30 + 10;
+            const posX = Math.random() * 100;
+            const delay = Math.random() * 15;
+            const duration = Math.random() * 10 + 10;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.opacity = Math.random() * 0.3;
+            
+            container.appendChild(particle);
+        }
+    }
+    
+    // Анимация навигации при скролле
+    function handleScroll() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+    
+    // Анимация элементов при скролле
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.8;
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            
+            if (elementTop < triggerPoint) {
+                element.classList.add('animated');
+            }
+        });
+    }
+    
+    // Плавный скролл для якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Закрываем мобильное меню, если оно открыто
+                const menu = document.getElementById('menu');
+                const menuToggle = document.getElementById('mobile-menu');
+                if (menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    });
+    
+    // Мобильное меню
+    const menuToggle = document.getElementById('mobile-menu');
+    const menu = document.getElementById('menu');
+    
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        menu.classList.toggle('active');
+        
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Закрытие меню при клике на ссылку
+    const menuLinks = document.querySelectorAll('.mobile-menu a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            menu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+        initParticles();
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Проверить сразу при загрузке
+    });
+</script>
+
+</body></html>
