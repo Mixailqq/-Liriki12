@@ -954,7 +954,39 @@ tv1111cer@gmail.com
         window.addEventListener('scroll', animateOnScroll);
         animateOnScroll(); // Проверить сразу при загрузке
     });
+
+document.addEventListener('DOMContentLoaded', function() {
+const copyButton = document.getElementById('copyButton');
+const copyTarget = document.getElementById('copyTarget');
+const copyStatus = document.getElementById('copyStatus');
+
+copyButton.addEventListener('click', async function() {
+try {
+// Получаем текст из div
+const text = copyTarget.textContent;
+
+// Копируем текст в буфер обмена
+await navigator.clipboard.writeText(text);
+
+// Обновляем статус и показываем уведомление
+copyStatus.textContent = 'Текст скопирован!';
+copyStatus.classList.add('show-status');
+
+// Скрываем уведомление через 2 секунды
+setTimeout(() => {
+copyStatus.classList.remove('show-status');
+}, 2000);
+
+} catch (err) {
+console.error('Не удалось скопировать текст: ', err);
+copyStatus.textContent = 'Ошибка копирования!';
+copyStatus.classList.add('show-status');
+}
+});
+});
+
 </script>
 
 
 </body></html>
+
