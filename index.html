@@ -393,11 +393,19 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+
+        .cards-container1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 540px;
+            margin: 0 auto;
+        }
         
         .card {
             background: rgba(30, 30, 30, 0.7);
             border-radius: 25px;
-            padding: 50px 40px;
+            padding: 30px 20px;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
@@ -416,7 +424,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 50% 0%, rgba(142, 68, 173, 0.1), transparent 70%);
-            z-index: 1; /* Ниже контента */
+            z-index: 0; /* Ниже контента */
         }
         
         .card:hover {
@@ -427,8 +435,11 @@
         
         /* Новый класс для контента карточек */
         .card-content {
+            
             position: relative;
             z-index: 20; /* Выше псевдоэлемента */
+            list-style: none;
+
         }
         
         .card-title {
@@ -459,10 +470,10 @@
             display: flex;
             align-items: center;
             padding: 15px 30px;
-            background: rgba(142, 68, 173, 0.15);
+            background: rgba(141, 68, 173, 0.185);
             border-radius: 12px;
             transition: all 0.4s;
-            text-decoration: none;
+            text-decoration: none; /* убрать подчёркивание */
             color: white;
             border: 1px solid rgba(142, 68, 173, 0.3);
             font-weight: 500;
@@ -636,16 +647,13 @@
             border-radius: 10px;
             color: #ffffff;
             padding: 5px;
-            
+            font-size: 20px;
         }
-        p6{
-    background-color: #2bff00;
-    border-radius: 10px;
-    font-size: 10px;
-    padding: 5px;
-    color: #000000;
+        /* стили текстового поля */
+#inputText {
+  padding: 6px 7px;
+  font-size: 15px;
 }
-
 
 /* стили кнопки */
 .copyText {
@@ -655,6 +663,50 @@
   background-color: #121212;
   color: #efefef;
 }
+
+
+div a:hover {
+  transform: scale(1.1);
+}
+p6{
+    background-color: #2bff00;
+    border-radius: 10px;
+    font-size: 07px;
+    padding: 5px;
+    color: #000000;
+}
+.bio-label {
+        color: #8e44ad;
+        font-weight: 600;
+        min-width: 110px;
+        display: inline-block;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 10px 5px;
+    }
+.bio-list {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .bio-list li {
+        margin-bottom: 12px;
+        color: #b0b0b0;
+        font-size: 1.24rem;
+        display: flex;
+        align-items: baseline;
+        line-height: 1.5;
+    }
+    .bio-label1 {
+        color: #8e44ad;
+        font-weight: 600;
+        min-width: 200px;
+        display: inline-block;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.9px; 
+    }
     </style>
 </head>
 
@@ -675,129 +727,169 @@
     <!-- Глитч-эффект -->
     <div class="glitch-effect"></div>
 <!-- Навигация -->
-    <nav class="navbar" id="navbar">
-        <div class="logo">
-            <span class="logo-text">Liriki12</span>
-        </div>
-        <!-- Бургер меню -->
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-    </nav>
-    
-    <!-- Мобильное меню -->
-    <div class="mobile-menu" id="menu">
-        <a href="#social" class="btn">Соц сети</a>
-        <a href="#biography" class="btn">Биография</a>
+<nav class="navbar" id="navbar">
+    <div class="logo">
+        <span class="logo-text">Liriki12</span>
     </div>
-
-
-    <section class="hero">
-            <h2>Листай вниз, чтобы узнать обомне немного побольше!</р>
-    </section>
-   
-    <section class="section" id="social">
-        <div class="section-title-container">
-            <h2 class="section-title animate-on-scroll">Соц сети </h2>
-        </div>
+    <!-- Бургер меню -->
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
         
-        <div class="cards-container">
-            <div class="card animate-on-scroll">
-                <div class="card-content">
-                    <h3 class="card-title">Telegram</h3>
-                    <p class="card-description">Свяжитесь со мной через Telegram. Отвечаю практически быстро и всегда на связи!</p>
-                    <div class="card-buttons">
-                        <a href="https://t.me/Liriki12" target="_blank" class="card-btn">
-                            <img src="send_465595.png" alt="Telegram">
-                            Основной аккаунт
-                        </a>
-                    </div>
-                </div>
-                <br>
-                <p6>Работает</p6>
-            </div>
-            <div class="card animate-on-scroll">
-                <div class="card-content">
-                    <h3 class="card-title">Мой канал</h3>
-                    <p class="card-description">В канале ты можешь узнать о бомне немного побольше.</p>
-                    <div class="card-buttons">
-                        <a href="https://t.me/Timofei33" target="_blank"  class="card-btn">
-                            <img src="send_465595.png" alt="Telegram канал">
-                            Telegram канал
-                        </a>
-                    </div>
-                </div>
-                <br>
-                <p6>Работает</p6>
+    </div>
+</nav>
+
+<!-- Мобильное меню -->
+<div class="mobile-menu" id="menu">
+    <a href="#lichinfo" class="btn">Личная информация</a>
+    <a href="#celobr" class="btn">Цели и образование</a>
+    <a href="#kontakt" class="btn">Контакты</a>
+</div>
+
+
+<section class="hero">
+    <h2>Листай вниз, чтобы узнать обомне немного побольше!</р>
+</section>
+    
+        <!-- Секция биографии -->
+        <section class="section" id="lichinfo">
+            <div class="section-title-container">
+                <h2 class="section-title animate-on-scroll">Личная информация</h2>
             </div>
             
-            <div class="card animate-on-scroll">
-                <div class="card-content">
-                    <h3 class="card-title">ВКонтакте</h3>
-                    <p class="card-description">Мой аккаунт ВКонтакте для тех, кто предпочитает эту платформу. Учтите, что я редко там бываю - лучше писать в Telegram.</p>
-                    <div class="card-buttons">
-                        <a href="https://vk.com/timofei_127" target="_blank" class="card-btn">
-                            <img src="VK.png" alt="VK">
-                            ВКонтакте
-                        </a>
+            <div class="cards-container1">
+                <div class="card animate-on-scroll">
+                    <div class="card-content">
+                        <h3 class="card-title">Личная информация</h3>
+                            <li><span class="bio-label">Имя:</span> Тимофей</li>
+                            <li><span class="bio-label">Возраст:</span> 15 лет</li>
+                            <li><span class="bio-label">Город:</span> Тула</li>
+                            <li><span class="bio-label">Дата рождения:</span> 1 июля 2010</li>
+                            <li><span class="bio-label">Знак зодиака:</span> Лев </li>
                     </div>
                 </div>
-                <br>
-                <p6>Работает</p6>
+        </section>
+
+<!--------------------------------------------------------------------------------------------------------------------------->
+
+<section class="section" id="celobr">
+    <div class="section-title-container">
+                <h2 class="section-title animate-on-scroll">Цели и образование</h2>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card animate-on-scroll">
+                    <div class="card-content">
+                        <h3 class="card-title">Образование</h3>
+                        <ul class="bio-list">
+                            <li><p class="bio-label">Обучаюсь в:</p>9-ом классе</li>
+                            <li><span class="bio-label">Любимые предметы:</span> Технология, ОБЗР </li>
+                            <li><span class="bio-label">Сдаваемые предметы ОГЭ:</span> Биология, Рус.язык, Алгебра, Информатика </li>
+                            <li><span class="bio-label">Доп. курсы:</span> Биология, Рус.язык, Алгебра, Информатика, Веб-разработка</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-content">
+                        <h3 class="card-title">Цели</h3>
+                            <ul class="bio-list">
+                                <li><span class="bio-label">✅ 1/2 2025:</span> Начать изучать языки програмирования</li>
+                                <li><span class="bio-label">✅ Конец 2025:</span> Создать своё портфолио</li>
+                                <li><span class="bio-label">🚀 2026:</span> Поступить в коледж-техникум</li>
+                                <li><span class="bio-label">💡 Мечта 2026-2028:</span> Изучить языки програмирования</li>
+                    </ul>
+                    </div>
+                </div>
+            
+
+
             </div>
 
-            <div class="card animate-on-scroll">
-                <div class="card-content">
-                    <h3 class="card-title">Gmail</h3> 
+</section>
+
+
+
+            
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+            
+            
+            <section class="section" id="kontakt">
+                <div class="section-title-container">
+                    <h2 class="section-title animate-on-scroll">Контакты </h2>
+                </div>
+                
+                <div class="cards-container">
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <h3 class="card-title">Telegram</h3>
+                            <p class="card-description">Свяжитесь со мной через Telegram. Отвечаю практически быстро и всегда на связи!</p>
+                            <div class="card-buttons">
+                                <a href="https://t.me/Liriki12" target="_blank" class="card-btn">
+                                    <img src="send_465595.png" alt="Telegram">
+                                    Основной аккаунт
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                        <p6>Работает</p6>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <h3 class="card-title">Мой канал</h3>
+                            <p class="card-description">В канале ты можешь узнать о бомне немного побольше.</p>
+                            <div class="card-buttons">
+                                <a href="https://t.me/Timofei33" target="_blank"  class="card-btn">
+                                    <img src="send_465595.png" alt="Telegram канал">
+                                    Telegram канал
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                        <p6>Работает</p6>
+                    </div>
                     
-                    <p class="card-description">Общение здесь бесплатное, но ответы могут задержаться — я чаще онлайн на основном аккаунте. Имейте терпение.</p>
-                    <div class="card-buttons">
-                        <a href="mailto:tv1111cer@gmail.com" target="_blank" class="card-btn">
-                            <img src="email_12868600.png" alt="Gmail">
-                            Gmail
-                        </a>
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <h3 class="card-title">ВКонтакте</h3>
+                            <p class="card-description">Мой аккаунт ВКонтакте для тех, кто предпочитает эту платформу. Учтите, что я редко там бываю - лучше писать в Telegram.</p>
+                            <div class="card-buttons">
+                                <a href="https://vk.com/timofei_127" target="_blank" class="card-btn">
+                                    <img src="VK.png" alt="VK">
+                                    ВКонтакте
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                        <p6>Работает</p6>
                     </div>
+            
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <h3 class="card-title">Gmail</h3> 
+                            
+                            <p class="card-description">Общение здесь бесплатное, но ответы могут задержаться — я чаще онлайн на основном аккаунте. Имейте терпение.</p>
+                            <div class="card-buttons">
+                                <a href="mailto:tv1111cer@gmail.com" target="_blank" class="card-btn">
+                                    <img src="email_12868600.png" alt="Gmail">
+                                    Gmail
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                       <p6>Работает</p6>
+                    </div>
+            
+            
                 </div>
-                <br>
-               <p5>Временно не работает</p5>
-            </div>
-
-
-        </div>
-    </section>
-
-<!-- Секция биографии -->
-    <section class="section" id="biography">
-        <div class="section-title-container">
-            <h2 class="section-title animate-on-scroll">Биография</h2>
-        </div>
-        
-        <div class="cards-container">
-            <div class="card animate-on-scroll">
-                <div class="card-content">
-                    <h3 class="card-title">Моё био</h3>
-                    <p class="card-description">Меня зовут Тимофей.</p>
-                    <p class="card-description">Мне 15 лет.</p>
-                    <p class="card-description">Я проживаю в г.Туле.</p>
-                    <p class="card-description">Электронная почта:<div id="copyTarget" class="copy-content">tv1111cer@gmail.com</div>
-<button id="copyButton" class="copyText">Копировать текст</button>
-<span id="copyStatus" class="copy-status"></span>
-</div> </p>
-
-
-
-
-
-                </div>
-            </div>
-    </section>
-
-
-<!-- Футер -->
-<footer class="footer" style="background: transparent; color: white; padding: 20px 0; border-top: none;">
+            </section>
+            
+            
+            
+            <!-- Футер -->
+            <footer class="footer" style="background: transparent; color: white; padding: 20px 0; border-top: none;">
     <div class="footer-content">
         <div class="footer-logo">
             <span style="color: white;">
@@ -807,6 +899,7 @@
         </div>          
     </div>
 </footer>
+
 
 
 
@@ -997,6 +1090,7 @@ copyStatus.classList.add('show-status');
 
 
 </body></html>
+
 
 
 
