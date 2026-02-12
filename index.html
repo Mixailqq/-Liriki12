@@ -242,7 +242,7 @@
     font-size: 1.8rem; /* Уменьшаем размер для ПК */
     margin: 15px 0;
     padding: 10px 30px;
-    background: linear-gradient(to right, #fff, #d3a8ff);
+    background: linear-gradient(to right, #152c41, #bfda46);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 40px rgba(142, 68, 173, 0.5);
@@ -350,7 +350,27 @@
             transform: translateY(30px);
             animation: fadeInUp 1s 0.9s forwards;
         }
-        
+        .btn-premiym{
+            display: inline-block;
+            padding: 8px 10px;
+            background: linear-gradient(45deg, #257fd3, #4df02d);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+            margin: 15px;
+            box-shadow: 0 10px 30px rgba(174, 197, 45, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0s  forwards;
+        }
         .btn::before {
             content: '';
             position: absolute;
@@ -803,6 +823,7 @@ cursor: pointer;
 
 /*section*/
 
+
     </style>
 </head>
 
@@ -827,6 +848,8 @@ cursor: pointer;
     <div class="logo">
         <span class="logo-text">Liriki12</span>
     </div>
+    <!-- Центр обновление -->
+    <span class="category-btn btn-premiym" data-category="donat">Обновление</span>
     <!-- Бургер меню -->
     <div class="menu-toggle" id="mobile-menu">
         <span></span>
@@ -841,9 +864,7 @@ cursor: pointer;
         <a href="#lichinfo" class="btn category-btn" data-category="currency">Личная информация</a>
         <a href="#celobr" class="btn category-btn" data-category="currency">Цели и образование</a>
         <a href="#kontakt" class="btn category-btn" data-category="currency">Контакты</a>
-        <button class="category-btn btn" data-category="donat" style="color: black;">
-                 Обновление
-        </button>
+        
         
             
         
@@ -901,7 +922,7 @@ cursor: pointer;
                             <ul class="bio-list">
                                 <li><span class="bio-label">✅ 1/2 2025:</span> Начать изучать языки програмирования</li>
                                 <li><span class="bio-label">✅ Конец 2025:</span> Создать своё портфолио</li>
-                                <li><span class="bio-label">🚀 2026:</span> Поступить в колледж-техникум</li>
+                                <li><span class="bio-label">🚀 2026:</span> Поступить в коледж-техникум</li>
                                 <li><span class="bio-label">💡 Мечта 2026-2028:</span> Изучить языки програмирования</li>
                     </ul>
                     </div>
@@ -1103,7 +1124,9 @@ cursor: pointer;
 
 
 <script>
-    // Защита от скачивания изображений
+    //обновление страницы при нажатии на span с классом logo-text 
+document.querySelector('.logo-text')?.addEventListener('click', () => location.reload());
+// Защита от скачивания изображений
     document.addEventListener('DOMContentLoaded', function() {
         // Блокировка контекстного меню для всех изображений
         const images = document.querySelectorAll('img');
@@ -1321,6 +1344,7 @@ copyStatus.classList.add('show-status');
 
 
 </body></html>
+
 
 
 
