@@ -236,6 +236,23 @@
     position: relative;
     z-index: 10;
 }
+.mobile-menu button{
+    color: white;
+    text-decoration: none;
+    font-size: 1.8rem; /* Уменьшаем размер для ПК */
+    margin: 15px 0;
+    padding: 10px 30px;
+    background: linear-gradient(to right, #fff, #d3a8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(142, 68, 173, 0.5);
+    font-weight: 700;
+    letter-spacing: -1px;
+    transition: all 0.4s;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
 
 .mobile-menu a:hover {
     transform: scale(1.1);
@@ -359,6 +376,7 @@
             padding: 120px 40px;
             position: relative;
         }
+        
         
         .section-title-container {
             font-size: 3rem;
@@ -708,6 +726,83 @@ p6{
         text-transform: uppercase;
         letter-spacing: 0.9px; 
     }
+    .btnbio_has{
+background: #2bff00;
+padding: 10px;
+border-radius: 10px;
+font-size: 34px;
+margin-top: 100px;
+cursor: pointer;
+
+
+
+    }
+    .center_bio{
+        text-align: center;
+    }
+.notification {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            margin: 19px;
+            position: relative;
+            
+        }
+        .date {
+            display: inline-block;
+            background: #f0f2f5;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .date span {
+            color: #667eea;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+
+        .content {
+            color: #2d3748;
+        }
+
+        
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4a5568;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 12px;
+            border: 3px solid #b4c9e4;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #a0aec0;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #4a5568;
+        }
+
+/*section*/
+
     </style>
 </head>
 
@@ -741,17 +836,26 @@ p6{
     </div>
 </nav>
 
-<!-- Мобильное меню -->
-<div class="mobile-menu" id="menu">
-    <a href="#lichinfo" class="btn">Личная информация</a>
-    <a href="#celobr" class="btn">Цели и образование</a>
-    <a href="#kontakt" class="btn">Контакты</a>
-</div>
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="menu">
+        <a href="#lichinfo" class="btn category-btn" data-category="currency">Личная информация</a>
+        <a href="#celobr" class="btn category-btn" data-category="currency">Цели и образование</a>
+        <a href="#kontakt" class="btn category-btn" data-category="currency">Контакты</a>
+        <button class="category-btn btn" data-category="donat" style="color: black;">
+                 Обновление
+        </button>
+        
+            
+        
+    </div>
 
 
-<section class="hero">
-    <h2>Листай вниз, чтобы узнать обомне немного побольше!</р>
-</section>
+<div style="display: grid;"  id="currency-products">
+
+
+    <section class="hero">
+        <h2>Листай вниз, чтобы узнать обомне немного побольше!</р>
+    </section>
     
         <!-- Секция биографии -->
         <section class="section" id="lichinfo">
@@ -767,14 +871,14 @@ p6{
                             <li><span class="bio-label">Возраст:</span> 15 лет</li>
                             <li><span class="bio-label">Город:</span> Тула</li>
                             <li><span class="bio-label">Дата рождения:</span> 1 июля 2010</li>
-                            <li><span class="bio-label">Знак зодиака:</span> Рак </li>
+                            <li><span class="bio-label">Знак зодиака:</span> Лев </li>
                     </div>
                 </div>
         </section>
 
 <!--------------------------------------------------------------------------------------------------------------------------->
 
-<section class="section" id="celobr">
+    <section class="section" id="celobr">
     <div class="section-title-container">
                 <h2 class="section-title animate-on-scroll">Цели и образование</h2>
             </div>
@@ -807,7 +911,7 @@ p6{
 
             </div>
 
-</section>
+    </section>
 
 
 
@@ -826,6 +930,10 @@ p6{
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <h3 class="card-title">Telegram</h3>
+
+
+                            
+
                             <p class="card-description">Свяжитесь со мной через Telegram. Отвечаю практически быстро и всегда на связи!</p>
                             <div class="card-buttons">
                                 <a href="https://t.me/Liriki12" target="_blank" class="card-btn">
@@ -855,9 +963,14 @@ p6{
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <h3 class="card-title">ВКонтакте</h3>
+
+
+                                
+
+
                             <p class="card-description">Мой аккаунт ВКонтакте для тех, кто предпочитает эту платформу. Учтите, что я редко там бываю - лучше писать в Telegram.</p>
                             <div class="card-buttons">
-                                <a href="https://vk.com/timofei_127" target="_blank" class="card-btn">
+                                <a href="https://vk.ru/id595785800" target="_blank" class="card-btn">
                                     <img src="VK.png" alt="VK">
                                     ВКонтакте
                                 </a>
@@ -866,46 +979,117 @@ p6{
                         <br>
                         <p6>Работает</p6>
                     </div>
-            
+                    
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <h3 class="card-title">Gmail </h3> 
                             
                             <div id="copyTarget" class="copy-content">tv1111cer@gmail.com</div>
                             <br>
-                                <button id="copyButton" class="copyText">Копировать gmail</button>
-                                <span id="copyStatus" class="copy-status"></span>
-                            </p>
-
-                            <br>
-                            <p class="card-description">Общение здесь бесплатное, но ответы могут задержаться — я чаще онлайн на основном аккаунте. Имейте терпение.</p>
-                            <div class="card-buttons">
-                                <a href="mailto:tv1111cer@gmail.com" target="_blank" class="card-btn">
-                                    <img src="email_12868600.png" alt="Gmail">
-                                    Gmail
-                                </a>
-                            </div>
-                        </div>
+                            <button id="copyButton" class="copyText">Копировать gmail</button>
+                            <span id="copyStatus" class="copy-status"></span>
+                        </p>
+                        
                         <br>
-                       <p6>Работает</p6>
+                        <p class="card-description">Общение здесь бесплатное, но ответы могут задержаться — я чаще онлайн на основном аккаунте. Имейте терпение.</p>
+                        <div class="card-buttons">
+                            <a href="mailto:tv1111cer@gmail.com" target="_blank" class="card-btn">
+                                <img src="email_12868600.png" alt="Gmail">
+                                Gmail
+                            </a>
+                        </div>
                     </div>
-            
-            
+                    <br>
+                    <p6>Работает</p6>
                 </div>
-            </section>
-            
-            
-            
-            <!-- Футер -->
-            <footer class="footer" style="background: transparent; color: white; padding: 20px 0; border-top: none;">
-    <div class="footer-content">
-        <div class="footer-logo">
-            <span style="color: white;">
-                © 2026 ООО « Liriki12.ru »<br>
-               
-            </span>
-        </div>          
+                
+                
+            </div>
+        </section>
+        
     </div>
+    
+    
+    
+    
+    
+    
+    
+    <div  id="donat-products" style="display: none;">
+        
+        <div class="center_bio" >
+                    
+            <button class="category-btn btnbio_has" data-category="currency" style="color: black;">
+                Назад в Биография
+            </button>
+        </div>
+        <section class="section " >
+            
+            
+            
+            <!-------------------------------->
+            <div class="notification">
+                <div class="date">
+                    📅 <span >11</span> 
+                    <span >февраля</span> 
+                    <span >2026</span>
+                </div>
+                <div class="content">
+                    
+                    <p>
+                        Было небольшое обновление в моей биографии в котором добавилось "мои цели, образование и моя личная информация".
+                    </p>
+                </div>
+            </div>
+            <!-------------------------------->
+            <div class="notification">
+                <div class="date">
+                    📅 <span >13</span> 
+                    <span >сентября</span> 
+                    <span >2025</span>
+                </div>
+                <div class="content">
+                    
+                    <p>
+                        Было колосальное обновление портфолио. 
+                    </p>
+                </div>
+            </div>
+            <!-------------------------------->
+            <div class="notification">
+                <div class="date">
+                    📅 <span >28</span> 
+                    <span >июля</span> 
+                    <span >2025</span>
+                </div>
+                <div class="content">
+                    
+                    <p>
+                        Портфолио было открыто.
+                    </p>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+    </section>
+       
+</div>
+
+<!-- Футер -->
+<footer class="footer" style="background: transparent; color: white; padding: 20px 0; border-top: none;">
+<div class="footer-content">
+<div class="footer-logo">
+<span style="color: white;">
+    © 2026 ООО « Liriki12.ru »<br>
+   
+</span>
+</div>          
+</div>
 </footer>
 
 
@@ -1055,6 +1239,15 @@ p6{
             document.body.style.overflow = 'auto';
         });
     });
+    // Закрытие меню при клике на кнопку
+    const menuLinks1 = document.querySelectorAll('.mobile-menu button');
+    menuLinks1.forEach(link => {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            menu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
     
     // Инициализация
     document.addEventListener('DOMContentLoaded', function() {
@@ -1063,7 +1256,8 @@ p6{
         window.addEventListener('scroll', animateOnScroll);
         animateOnScroll(); // Проверить сразу при загрузке
     });
-
+//-----------------------------------------------------------------------------------------------------------------------------//
+//копирование гмаила
 document.addEventListener('DOMContentLoaded', function() {
 const copyButton = document.getElementById('copyButton');
 const copyTarget = document.getElementById('copyTarget');
@@ -1078,7 +1272,7 @@ const text = copyTarget.textContent;
 await navigator.clipboard.writeText(text);
 
 // Обновляем статус и показываем уведомление
-copyStatus.textContent = 'gmail скопирован!';
+copyStatus.textContent = 'Текст скопирован!';
 copyStatus.classList.add('show-status');
 
 // Скрываем уведомление через 2 секунды
@@ -1094,10 +1288,40 @@ copyStatus.classList.add('show-status');
 });
 });
 
+//--------------------------------------------------------------------------------------
+
+
+
+// Переключение категорий
+            document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Удаляем активный класс у всех кнопок при переключении
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Добавляем активный класс текущей кнопке
+                this.classList.add('active');
+                
+                // Получаем категорию
+                const category = this.getAttribute('data-category');
+                
+                // Показываем соответствующую категорию товаров
+                if (category === 'currency') {
+                    document.getElementById('currency-products').style.display = 'grid';
+                    document.getElementById('donat-products').style.display = 'none';
+                } else {
+                    document.getElementById('currency-products').style.display = 'none';
+                    document.getElementById('donat-products').style.display = 'grid';
+                }
+            });
+        });
+
 </script>
 
 
 </body></html>
+
 
 
 
