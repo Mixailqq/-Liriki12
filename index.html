@@ -15,7 +15,7 @@
             --text: #e0e0e0;
             --text-secondary: #b0b0b0;
         }
-        
+        /*animate-on-scroll*/
         * {
             margin: 0;
             padding: 0;
@@ -593,11 +593,6 @@
             height: auto;
             opacity: 0.8;
         }
-        .footer-reg img {
-            width: 90px;
-            height: auto;
-            opacity: 0.8;
-        }
         
         /* Анимации при скролле */
         .animate-on-scroll {
@@ -606,6 +601,10 @@
             transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
         /* Адаптивность */
         @media (max-width: 1024px) {
@@ -822,7 +821,8 @@ cursor: pointer;
             color: #4a5568;
         }
 
-/*section*/
+
+
 
 
     </style>
@@ -1153,31 +1153,7 @@ document.querySelector('.logo-text')?.addEventListener('click', () => location.r
             }
         });
     });
-    
-// Анимация навигации при скролле
-    function handleScroll() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-    
-    // Анимация элементов при скролле
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.animate-on-scroll');
-        const windowHeight = window.innerHeight;
-        const triggerPoint = windowHeight * 0.8;
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            
-            if (elementTop < triggerPoint) {
-                element.classList.add('animated');
-            }
-        });
-    }
+
     // Обработчик для mailto ссылок
     function handleMailClick(event, email) {
         event.preventDefault();
@@ -1185,7 +1161,6 @@ document.querySelector('.logo-text')?.addEventListener('click', () => location.r
         return false;
     }
 
-    
     // Инициализация партиклов
     function initParticles() {
         const container = document.getElementById('particles');
@@ -1212,6 +1187,30 @@ document.querySelector('.logo-text')?.addEventListener('click', () => location.r
         }
     }
     
+    // Анимация навигации при скролле
+    function handleScroll() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+    
+    // Анимация элементов при скролле
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.8;
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            
+            if (elementTop < triggerPoint) {
+                element.classList.add('animated');
+            }
+        });
+    }
     
     // Плавный скролл для якорных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1342,10 +1341,12 @@ copyStatus.classList.add('show-status');
             });
         });
 
+
 </script>
 
 
 </body></html>
+
 
 
 
