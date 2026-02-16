@@ -1152,7 +1152,31 @@ document.querySelector('.logo-text')?.addEventListener('click', () => location.r
             }
         });
     });
-
+    
+// Анимация навигации при скролле
+    function handleScroll() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+    
+    // Анимация элементов при скролле
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.8;
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            
+            if (elementTop < triggerPoint) {
+                element.classList.add('animated');
+            }
+        });
+    }
     // Обработчик для mailto ссылок
     function handleMailClick(event, email) {
         event.preventDefault();
