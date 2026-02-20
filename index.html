@@ -854,6 +854,20 @@ body.dark-theme section .hero_port {
     background: #d7dde0;
     color: #1b1b1bdc;
 }
+body.dark-theme .notification  {
+    background: #0f0f0f;
+    
+}
+body.dark-theme .notification p {
+    font-size: 16px;
+            line-height: 1.6;
+            color: #cdd1d8;
+            padding: 15px;
+            background: #000000;
+            border-radius: 12px;
+            border: 3px solid #d1d4d6;
+    
+}
 body.dark-theme section div .bio-label  {
     color: #8cc02c;
         font-weight: 600;
@@ -1340,7 +1354,7 @@ document.querySelector('.logo-text')?.addEventListener('click', () => location.r
         });
     });
     // Закрытие меню при клике на кнопку
-    const menuLinks1 = document.querySelectorAll('.mobile-menu button');
+    const menuLinks1 = document.querySelectorAll('.mobile-menu span');
     menuLinks1.forEach(link => {
         link.addEventListener('click', function() {
             menuToggle.classList.remove('active');
@@ -1540,6 +1554,7 @@ loadSavedTheme();
 
 
 </body></html>
+
 
 
 
