@@ -16,7 +16,6 @@
             --text: #e0e0e0;
             --text-secondary: #b0b0b0;
         }
-        /*animate-on-scroll*/
         * {
             margin: 0;
             padding: 0;
@@ -286,6 +285,10 @@
             overflow: hidden;
             margin: 60px;
         }
+        .hero_port{
+            color: rgba(181, 189, 189, 0.925);
+        }
+        
         
         .hero-content {
             max-width: 1200px;
@@ -821,6 +824,62 @@ cursor: pointer;
         .close-btn:hover {
             color: #4a5568;
         }
+#theme-toggle{
+padding: 10px;
+border-radius: 5px;
+background: linear-gradient( to right, #e2dfdf, #000000);
+}
+/* Светлая тема */
+body.dark-theme {
+    background: #d7dde0;
+    color: #110f0f;
+}
+body.dark-theme nav {
+    background: #d7dde0;
+    color: #110f0f;
+}
+body.dark-theme footer p {
+    background: #d7dde0;
+    color: #110f0f;
+}
+body.dark-theme section {
+    background: #d7dde0;
+    color: #110f0f;
+}
+body.dark-theme .navbar.scrolled {
+    background: #d7dde0;
+    color: #110f0f;
+}
+body.dark-theme section .hero_port {
+    background: #d7dde0;
+    color: #1b1b1bdc;
+}
+body.dark-theme section div .bio-label  {
+    color: #8cc02c;
+        font-weight: 600;
+        min-width: 110px;
+        display: inline-block;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 10px 5px;
+}
+body.dark-theme section div li {
+    
+    color: #b4a0a0dc;
+}
+body.dark-theme div .copy-content {
+    color: #d8c7c7dc;
+}
+body.dark-theme .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+            background: linear-gradient(to right, #130f0f, #121113);
+}
+body.dark-theme .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+        background: linear-gradient(to right, #1b1616, #0e0d0f);
+}
+
 
 
 
@@ -847,6 +906,7 @@ cursor: pointer;
     <div class="glitch-effect"></div>
 <!-- Навигация -->
 <nav class="navbar" id="navbar">
+    <button id="theme-toggle" >Вкл 🌙</button>
     <div class="logo">
         <span class="logo-text">Liriki12</span>
     </div>
@@ -862,7 +922,7 @@ cursor: pointer;
     <!-- Мобильное меню -->
 
         <div class="mobile-menu" id="menu">
-            <a href="" class="logn"><img src="avatar1.jpg" while="40" height="40" style="border-radius: 22px;" alt=""></a>
+            <a href="login.html" class="logn"><img src="avatar1.jpg" while="40" height="40" style="border-radius: 22px;" alt=""></a>
         <a href="#lichinfo" class="btn category-btn" data-category="currency">Личная информация</a>
         <a href="#celobr" class="btn category-btn" data-category="currency">Цели и образование</a>
         <a href="#kontakt" class="btn category-btn" data-category="currency">Контакты</a>
@@ -876,7 +936,7 @@ cursor: pointer;
 
     
     <section class="hero ">
-        <div><h2 style="color: rgba(199, 206, 206, 0.925);">Ты находишься в моём портфолио.</h2>
+        <div><h2 class="hero_port">Ты находишься в моём портфолио.</h2>
             <br />
         <h2>Листай вниз, чтобы узнать обомне немного побольше!</h2>
     </section>
@@ -913,7 +973,7 @@ cursor: pointer;
                         <h3 class="card-title">Образование</h3>
                         <ul class="bio-list">
                             <li><p class="bio-label">Обучаюсь в:</p>9-ом классе</li>
-                            <li><span class="bio-label">Любимые учителя:</span> Колька автомат </li>
+                            <li><span class="bio-label">Любимые учителя:</span> Колька автомат и Ирина Александровна (Иришка Чики пики) </li>
                             <li><span class="bio-label">Сдаваемые предметы ОГЭ:</span> Биология, Рус.язык, Алгебра, Информатика </li>
                             <li><span class="bio-label">Доп. курсы:</span> Биология, Рус.язык, Алгебра, Информатика, Веб-разработка</li>
                         </ul>
@@ -1061,7 +1121,7 @@ cursor: pointer;
                 <div class="content">
                     
                     <p>
-                        Было небольшое обновление в моём портфолио в котором добавилось "мои цели, образование, моя личная информация и обновление".
+                        Было небольшое обновление в моей биографии в котором добавилось "мои цели, образование, моя личная информация и обновление".
                     </p>
                 </div>
             </div>
@@ -1109,7 +1169,8 @@ cursor: pointer;
 <div class="footer-content">
 <div class="footer-logo">
 <span style="color: white;">
-    © 2026 ООО « Liriki12.ru »<br>
+    <p>© 2026 ООО « Liriki12.ru »</p>
+
    
 </span>
 </div>          
@@ -1342,9 +1403,8 @@ copyStatus.classList.add('show-status');
                 }
             });
         });
-
 //--------------------------------------------------------------------------------------------------
-
+//блокировка приближения
 
 (function() {
   function setViewport() {
@@ -1358,7 +1418,7 @@ copyStatus.classList.add('show-status');
   }
   setViewport();
 
-//---------------------
+
   document.addEventListener('keydown', function(event) {
     if (event.ctrlKey || event.metaKey) {
       if (event.key === '+' || event.key === '-' || event.key === '=' || 
@@ -1370,7 +1430,7 @@ copyStatus.classList.add('show-status');
     }
   });
 
- 
+
   document.addEventListener('wheel', function(event) {
     if (event.ctrlKey || event.metaKey) {
       event.preventDefault();
@@ -1416,12 +1476,58 @@ copyStatus.classList.add('show-status');
 })();
 
 //------------------------------------------------------------------------------
+//переключения с темной на светлую
+
+// Получаем кнопку переключения темы
+const themeToggle = document.getElementById('theme-toggle');
+
+// Функция для переключения темы
+function toggleTheme() {
+    // Переключаем класс 'dark-theme' на body
+    document.body.classList.toggle('dark-theme');
+    
+    // Сохраняем выбор пользователя в localStorage
+    const isDark = document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+    // Обновляем текст кнопки (опционально)
+    updateButtonText(isDark);
+}
+
+// Функция для обновления текста кнопки
+function updateButtonText(isDark) {
+    if (themeToggle) {
+        themeToggle.textContent = isDark ? 'Вкл 🌞' : 'Вкл 🌙';
+    }
+}
+
+// Проверяем сохраненную тему при загрузке страницы
+function loadSavedTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        updateButtonText(true);
+    } else {
+        updateButtonText(false);
+    }
+}
+
+// Добавляем обработчик события на кнопку
+if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+// Загружаем сохраненную тему
+loadSavedTheme();
+//--------------------------------------------------------------------------
 
 
 </script>
 
 
 </body></html>
+
 
 
 
